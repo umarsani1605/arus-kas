@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Arus Kas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="tracker-app">
+
+    <header class="tracker-header">
+      <h1 class="tracker-header__title">
+        <img class="tracker-header__logo" src="assets/logo.svg" alt="" width="44" height="20">
+        <span class="tracker-header__wordmark">Arus Kas</span>
+      </h1>
+      <div class="tracker-header__user">
+        <div class="tracker-header__user-info">
+          <span class="tracker-header__greeting"><strong>Umar Sani (umarsani1605)</strong></span>
+          <span class="tracker-header__date">Bulan Ini</span>
+        </div>
+        <div class="tracker-header__avatar" role="img" aria-label="Avatar Pengguna" aria-hidden="true">US</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="tracker-summary" aria-labelledby="summary-heading">
+        <h2 id="summary-heading" class="visually-hidden">Ringkasan Keuangan</h2>
+
+        <div class="tracker-summary__balance">
+          <h3 class="tracker-summary__label">Saldo Saat Ini</h3>
+          <p class="tracker-summary__balance-amount">Rp 0</p>
+        </div>
+
+        <div class="tracker-summary__stat">
+          <h3 class="tracker-summary__label">Pemasukan</h3>
+          <p class="tracker-summary__stat-amount tracker-summary__stat-amount--income">Rp 0</p>
+        </div>
+
+        <div class="tracker-summary__stat">
+          <h3 class="tracker-summary__label">Pengeluaran</h3>
+          <p class="tracker-summary__stat-amount tracker-summary__stat-amount--expense">Rp 0</p>
+        </div>
+      </section>
+
+      <section class="tracker-form-section" aria-labelledby="form-heading" hidden>
+        <div class="tracker-form-section__card" role="dialog" aria-modal="true" aria-labelledby="form-heading">
+          <h2 id="form-heading" class="tracker-form-section__heading">Tambah Pencatatan Baru</h2>
+
+          <form id="transactionForm" data-testid="transactionForm" class="tracker-form">
+            <div class="tracker-form__field">
+              <label class="tracker-form__label" for="transactionFormTitleInput">Keterangan</label>
+              <input type="text" id="transactionFormTitleInput" data-testid="transactionFormTitleInput" class="tracker-form__input" placeholder="Contoh, makan siang...">
+            </div>
+            <div class="tracker-form__field">
+              <label class="tracker-form__label" for="transactionFormAmountInput">Nominal (Rp)</label>
+              <input type="number" id="transactionFormAmountInput" data-testid="transactionFormAmountInput" class="tracker-form__input" placeholder="50000">
+            </div>
+            <div class="tracker-form__field">
+              <label class="tracker-form__label" for="transactionFormDateInput">Tanggal</label>
+              <input type="date" id="transactionFormDateInput" data-testid="transactionFormDateInput" class="tracker-form__input">
+            </div>
+            <div class="tracker-form__field">
+              <label class="tracker-form__label" for="transactionFormTypeSelect">Kategori</label>
+              <select id="transactionFormTypeSelect" data-testid="transactionFormTypeSelect" class="tracker-form__input">
+                <option value="income">Uang Masuk</option>
+                <option value="expense">Uang Keluar</option>
+              </select>
+            </div>
+            <button type="submit" data-testid="transactionFormSubmitButton" class="tracker-form__submit">Simpan</button>
+            <button type="button" id="transactionFormCancelButton" class="tracker-form__cancel">Batal</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="tracker-history" aria-labelledby="history-heading">
+        <h2 id="history-heading" class="visually-hidden">Riwayat Transaksi</h2>
+
+        <div class="tracker-search">
+          <form id="searchTransactionForm" data-testid="searchTransactionForm" class="tracker-search__form" role="search">
+            <input type="search" id="searchTransactionFormTitleInput" data-testid="searchTransactionFormTitleInput" class="tracker-form__input" placeholder="Cari berdasarkan judul" aria-label="Kata kunci pencarian transaksi">
+            <button type="submit" data-testid="searchTransactionFormSubmitButton" class="tracker-search__submit" aria-label="Mulai Pencarian">Cari</button>
+          </form>
+          <button type="button" id="addTransactionButton" class="tracker-search__add" aria-haspopup="dialog">Tambah</button>
+        </div>
+
+        <div class="tracker-history__grid">
+          <div class="tracker-transaction-list">
+            <div class="tracker-transaction-list__header">
+              <h3 class="tracker-transaction-list__title">Pemasukan</h3>
+              <span id="incomeCount" class="tracker-transaction-list__count tracker-transaction-list__count--income" aria-label="Jumlah transaksi pemasukan">0</span>
+            </div>
+            <div id="incomeList" data-testid="incomeList" class="tracker-transaction-list__container">
+            </div>
+          </div>
+
+          <div class="tracker-transaction-list">
+            <div class="tracker-transaction-list__header">
+              <h3 class="tracker-transaction-list__title">Pengeluaran</h3>
+              <span id="expenseCount" class="tracker-transaction-list__count tracker-transaction-list__count--expense" aria-label="Jumlah transaksi pengeluaran">0</span>
+            </div>
+            <div id="expenseList" data-testid="expenseList" class="tracker-transaction-list__container">
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="tracker-footer">
+      <p>&#169; 2026 Arus Kas</p>
+    </footer>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
