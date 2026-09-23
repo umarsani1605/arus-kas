@@ -25,6 +25,8 @@
 
   --font-family: 'Geist', system-ui, sans-serif;
 
+  --card-height: 10.5rem;
+
   --radius-panel: 14px;
   --radius-control: 10px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -391,7 +393,10 @@ select { font: inherit; color: inherit; }
 }
 
 .tracker-transaction-list__container:empty {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--card-height);
   padding: 2rem 1rem;
   border: 1px dashed var(--border-light);
   border-radius: var(--radius-panel);
@@ -406,6 +411,7 @@ select { font: inherit; color: inherit; }
 
 .tracker-entry {
   position: relative;
+  min-height: var(--card-height);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
